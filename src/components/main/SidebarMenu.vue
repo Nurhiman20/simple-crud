@@ -45,9 +45,9 @@
             </router-link>
           </li>
           <li class="nav-item has-treeview">
-            <router-link to="/blank" class="nav-link">
-              <font-awesome-icon icon="th" class="nav-icon" />
-              <p>Blank Page</p>
+            <router-link to="/user-list" class="nav-link">
+              <font-awesome-icon icon="users" class="nav-icon" />
+              <p>User List</p>
             </router-link>
           </li>
         </ul>
