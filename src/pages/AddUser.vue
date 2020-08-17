@@ -55,11 +55,16 @@
               <div class="spinner-border text-primary ml-2" role="status" v-if="loadingAdd">
                 <span class="sr-only">Loading...</span>
               </div>
-              <div class="alert alert-success mt-4" role="alert" v-if="successAddUser">
-                Successfully added user
+              <div class="alert alert-success mt-4 d-flex flex-row justify-content-between" role="alert" v-if="successAddUser">
+                <p>Successfully added user.</p>
+                <div>
+                  <button type="button" class="btn btn-warning" @click.prevent="$router.push('/user-list')">Back to user list page</button>
+                  <button type="button" class="btn btn-primary ml-2" @click.prevent="addAnother">Add another user</button>
+                </div>
               </div>
-              <div class="alert alert-danger mt-4" role="alert" v-if="failedAddUser">
-                System error. Please contact administrator
+              <div class="alert alert-danger mt-4 d-flex flex-row justify-content-between" role="alert" v-if="failedAddUser">
+                <p>System error. Please contact administrator.</p>
+                <font-awesome-icon icon="window-close" class="pointer" @click="failedAddUser = false" />
               </div>
             </form>
           </div>
@@ -83,6 +88,13 @@ export default {
     }
   },
   methods: {
+    addAnother () {
+      this.name = null
+      this.username = null
+      this.email = null
+      this.phone = null
+      this.successAddUser = false
+    },
     submitForm () {
       this.loadingAdd = true
       let allData = JSON.stringify({
