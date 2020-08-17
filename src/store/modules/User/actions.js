@@ -19,8 +19,23 @@ const getListUser = ({ commit }) => {
 
 const postUser = ({state}) => {
   return new Promise((resolve, reject) => {
-    axios.post(baseUrl + '/users', state.dataNewUser,
+    axios.post(baseUrl + '/users', state.dataUser,
     {
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+      .then(response => {
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
+  })
+}
+
+const editUser = ({ state }) => {
+  return new Promise((resolve, reject) => {
+    axios.put(baseUrl + '/users/' + state.selectedIdUser, state.dataUser, {
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
@@ -48,5 +63,6 @@ const deleteUser = ({ state, commit }) => {
 export default {
   getListUser,
   postUser,
+  editUser,
   deleteUser
 }

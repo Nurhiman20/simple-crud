@@ -71,7 +71,7 @@
                   <td>{{ user.email }}</td>
                   <td>{{ user.phone }}</td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" @click="$router.push('/add-user')">Edit</button>
+                    <button type="button" class="btn btn-outline-success" @click.prevent="editUser(user)">Edit</button>
                     <button type="button" class="btn btn-outline-danger ml-2" @click.prevent="confirmDelete(user)">Delete</button>
                   </td>
                 </tr>
@@ -133,6 +133,10 @@ export default {
     }
   },
   methods: {
+    editUser (user) {
+      this.$store.commit('user/SET_SELECTED_USER', user)
+      this.$router.push('/edit-user')
+    },
     confirmDelete (user) {
       this.dataDelete = user
       this.alertConfirmDelete = true

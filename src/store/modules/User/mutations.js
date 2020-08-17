@@ -2,12 +2,16 @@ const SET_LIST = (state, payload) => {
   state.userList = payload
 }
 
-const SET_NEW_USER = (state, payload) => {
-  state.dataNewUser = payload
+const SET_DATA_USER = (state, payload) => {
+  state.dataUser = payload
 }
 
 const SET_SELECTED_ID = (state, payload) => {
   state.selectedIdUser = payload
+}
+
+const SET_SELECTED_USER = (state, payload) => {
+  state.selectedUser = payload
 }
 
 const DELETE_USER = (state, payload) => {
@@ -20,7 +24,8 @@ const DELETE_USER = (state, payload) => {
 
 export default {
   SET_LIST,
-  SET_NEW_USER,
+  SET_DATA_USER,
   SET_SELECTED_ID,
+  SET_SELECTED_USER,
   DELETE_USER
 }

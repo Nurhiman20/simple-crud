@@ -5,6 +5,7 @@ import Main from '@/pages/Main'
 import Dashboard from '@/pages/Dashboard'
 import UserList from '@/pages/User'
 import AddUser from '@/pages/AddUser'
+import EditUser from '@/pages/EditUser'
 
 Vue.use(Router)
 
@@ -17,7 +18,8 @@ export default new Router({
       children: [
         { path: '/', component: Dashboard },
         { path: '/user-list', component: UserList },
-        { path: '/add-user', component: AddUser }
+        { path: '/add-user', component: AddUser },
+        { path: '/edit-user', component: EditUser }
       ]
     }
   ]
