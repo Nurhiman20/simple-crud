@@ -21,6 +21,17 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
+            <div class="d-flex flex-row justify-content-between">
+              <div class="input-group mb-2 mr-sm-2" style="width: 30%">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <font-awesome-icon icon="search" />
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="searchUser" placeholder="Search user ..." v-model="search">
+              </div>
+              <button type="button" class="btn btn-primary">Add User</button>
+            </div>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -32,7 +43,7 @@
                 </tr>
               </thead>
               <tbody>       
-                <tr v-for="(user, index) in userList" :key="index">
+                <tr v-for="(user, index) in filteredList" :key="index">
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ user.name }}</td>
                   <td>{{ user.username }}</td>
@@ -61,7 +72,8 @@ const { mapState } = createNamespacedHelpers('user')
 export default {
   data() {
     return {
-      loadingGetList: false
+      loadingGetList: false,
+      search: null
     }
   },
   created () {
@@ -79,7 +91,16 @@ export default {
   computed: {
     ...mapState({
       userList: state => state.userList
-    })
+    }),
+    filteredList() {
+      if (this.search !== null) {
+        return this.userList.filter(user => {
+          return user.name.toLowerCase().includes(this.search.toLowerCase()) || user.username.toLowerCase().includes(this.search.toLowerCase())
+        }) 
+      } else {
+        return this.userList
+      }
+    }
   }
 }
 </script>
