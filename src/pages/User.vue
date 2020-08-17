@@ -31,8 +31,8 @@
                   <th scope="col">Phone</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr v-for="(user, index) in users" :key="index">
+              <tbody>       
+                <tr v-for="(user, index) in userList" :key="index">
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ user.name }}</td>
                   <td>{{ user.username }}</td>
@@ -41,6 +41,11 @@
                 </tr>
               </tbody>
             </table>
+            <div class="mt-4 d-flex" style="width: 100%" v-if="loadingGetList">
+              <div class="spinner-border text-primary mx-auto" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>  
           </div>
         </div>
       </div>
@@ -49,26 +54,32 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+
+const { mapState } = createNamespacedHelpers('user')
+
 export default {
   data() {
     return {
-      users: [
-        {
-          "id": 1,
-          "name": "Leanne Graham",
-          "username": "Bret",
-          "email": "Sincere@april.biz",
-          "phone": "1-770-736-8031 x56442"
-        },
-        {
-          "id": 2,
-          "name": "Ervin Howell",
-          "username": "Antonette",
-          "email": "Shanna@melissa.tv",
-          "phone": "010-692-6593 x09125"
-        }
-      ]
+      loadingGetList: false
     }
   },
+  created () {
+    this.loadingGetList = true
+    this.$store.dispatch('user/getListUser')
+      .then(response => {
+        this.loadingGetList = false
+      })
+      .catch((error) => {
+        this.loadingGetList = false
+        this.errorMessage = "System error"
+        this.dialogFailed = true
+      })
+  },
+  computed: {
+    ...mapState({
+      userList: state => state.userList
+    })
+  }
 }
 </script>
