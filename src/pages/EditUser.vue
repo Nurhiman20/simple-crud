@@ -81,10 +81,6 @@ const { mapState } = createNamespacedHelpers('user')
 export default {
   data () {
     return {
-      // name: null,
-      // username: null,
-      // email: null,
-      // phone: null,
       loadingEdit: false,
       alertSuccess: false,
       alertFailed: false

@@ -3,6 +3,7 @@ import mutations from './mutations'
 
 const state = {
   userList: [],
+  lengthUserList: null,
   dataUser: {},
   selectedUser: {},
   selectedIdUser: null

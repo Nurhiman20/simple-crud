@@ -1,5 +1,6 @@
 const SET_LIST = (state, payload) => {
   state.userList = payload
+  state.lengthUserList = payload.length
 }
 
 const SET_DATA_USER = (state, payload) => {
