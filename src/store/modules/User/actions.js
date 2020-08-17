@@ -33,7 +33,20 @@ const postUser = ({state}) => {
   })
 }
 
+const deleteUser = ({ state, commit }) => {
+  return new Promise((resolve, reject) => {
+    axios.delete(baseUrl + '/users/' + state.selectedIdUser)
+      .then(response => {
+        commit('DELETE_USER', state.selectedIdUser)
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
+  })
+}
+
 export default {
   getListUser,
-  postUser
+  postUser,
+  deleteUser
 }
