@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <router-link to='/'>Home</router-link>
               </li>
               <li class="breadcrumb-item active">User List</li>
             </ol>
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="table-users">
+    <section class="table-users">
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
@@ -30,7 +30,7 @@
                 </div>
                 <input type="text" class="form-control" id="searchUser" placeholder="Search user ..." v-model="search">
               </div>
-              <button type="button" class="btn btn-primary">Add User</button>
+              <button type="button" class="btn btn-primary" @click="$router.push('/add-user')">Add User</button>
             </div>
             <table class="table table-striped">
               <thead>
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

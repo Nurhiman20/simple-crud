@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Main from '@/pages/Main'
 import Dashboard from '@/pages/Dashboard'
 import UserList from '@/pages/User'
+import AddUser from '@/pages/AddUser'
 
 Vue.use(Router)
 
@@ -15,7 +16,8 @@ export default new Router({
       component: Main,
       children: [
         { path: '/', component: Dashboard },
-        { path: '/user-list', component: UserList }
+        { path: '/user-list', component: UserList },
+        { path: '/add-user', component: AddUser }
       ]
     }
   ]

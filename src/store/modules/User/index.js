@@ -2,7 +2,8 @@ import actions from './actions'
 import mutations from './mutations'
 
 const state = {
-  userList: []
+  userList: [],
+  dataNewUser: {}
 }
 
 export default {

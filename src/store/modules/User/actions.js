@@ -17,6 +17,23 @@ const getListUser = ({ commit }) => {
   })
 }
 
+const postUser = ({state}) => {
+  return new Promise((resolve, reject) => {
+    axios.post(baseUrl + '/users', state.dataNewUser,
+    {
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+      .then(response => {
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
+  })
+}
+
 export default {
-  getListUser
+  getListUser,
+  postUser
 }
